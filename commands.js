@@ -52,7 +52,7 @@ db.bounties.insertMany([
     client: "Red wolf",
     reward: 5000,
     captured: false}])
-    {ordered: false})
+    {ordered: false}
 
 // MANAGE THE DATABASE
 // Queries
@@ -61,14 +61,14 @@ db.bounties.find({location: 'Grasslands'})
 // 2. Query for all bounties with a reward worth 10000 or more
 db.bounties.find({reward: {$gte: 10000}})
 // 3. Query for all bounties, but exclude the client attribute from being shown
-
+db.bounties.find({}, {client:0})
 // 4. Query for a Groundhog in the Woodlands
-
+db.bounties.find({ $and: [{species: 'Groundhog'}, {location: 'Woodlands'}]})
 // Update and Delete
 // 1. Update the reward for Polarwind to 10000
 
 // 2. Remove Lokinkajou
-
+db.bounties.remove({name: "Lokinkajou"})
 // 3. Delete all bounties sent by Songbird
-
+db.bounties
 // 4. Update all captured statuses to true
